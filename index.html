@@ -1,89 +1,168 @@
-<section id="portfolio" style="padding: 40px 20px; text-align: center; background: #111;">
-    <h2 style="color: white; font-size: 32px; margin-bottom: 20px;">Portfolio</h2>
-
-    <div class="grid-portfolio">
-        <!-- FOTOS DEL PORTFOLIO (CAMBIÁ LAS RUTAS DE /img1.jpg /img2.jpg...) -->
-        <div class="item"><img src="img1.jpg" alt="Tattoo 1"></div>
-        <div class="item"><img src="img2.jpg" alt="Tattoo 2"></div>
-        <div class="item"><img src="img3.jpg" alt="Tattoo 3"></div>
-        <div class="item"><img src="img4.jpg" alt="Tattoo 4"></div>
-        <div class="item"><img src="img5.jpg" alt="Tattoo 5"></div>
-        <div class="item"><img src="img6.jpg" alt="Tattoo 6"></div>
-    </div>
-</section>
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1" />
 <title>Rodrigo Mazzaro Tattoo Studio</title>
 <style>
-body {
-    margin: 0;
-    font-family: Arial, sans-serif;
-    background: #0a0a0a;
-    color: white;
-    text-align: center;
+:root{
+  --gold: #d4af37;
+  --bg: #0a0a0a;
+  --card: #0f0f0f;
+  --text: #ffffff;
 }
-header {
-    padding: 40px 20px;
+*{box-sizing:border-box}
+body{
+  margin:0;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+  background: linear-gradient(180deg, var(--bg) 0%, #070707 100%);
+  color:var(--text);
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+  text-rendering:optimizeLegibility;
 }
-h1 {
-    font-size: 36px;
-    color: #d4af37;
-    margin-bottom: 10px;
+.container{
+  width:95%;
+  max-width:900px;
+  margin:0 auto;
+  padding:28px 0 60px;
+  text-align:center;
 }
-h2 {
-    font-size: 18px;
-    opacity: 0.8;
+.header{
+  padding:36px 0 10px;
 }
-.container {
-    width: 90%;
-    max-width: 500px;
-    margin: 30px auto;
+.brand{
+  font-size:34px;
+  letter-spacing:1px;
+  color:var(--gold);
+  margin:0;
 }
-a.button {
-    display: block;
-    margin: 15px 0;
-    padding: 15px;
-    background: #1a1a1a;
-    border: 2px solid #d4af37;
-    border-radius: 8px;
-    color: #d4af37;
-    text-decoration: none;
-    font-size: 18px;
-    transition: 0.3s;
+.lead{
+  margin:8px 0 0;
+  color:rgba(255,255,255,0.85);
+  font-size:15px;
 }
-a.button:hover {
-    background: #d4af37;
-    color: #000;
+.buttons{
+  margin:26px 0 8px;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  align-items:center;
+  justify-content:center;
 }
-.footer {
-    margin-top: 40px;
-    font-size: 14px;
-    opacity: 0.6;
+a.btn{
+  display:inline-block;
+  width:100%;
+  max-width:420px;
+  padding:14px 18px;
+  border-radius:10px;
+  border:2px solid var(--gold);
+  background:transparent;
+  color:var(--gold);
+  text-decoration:none;
+  font-weight:600;
+  font-size:16px;
+  transition: all 180ms ease;
+}
+a.btn:hover{
+  background:var(--gold);
+  color:#000;
+  transform:translateY(-3px);
+}
+.small{
+  font-size:13px;
+  color:rgba(255,255,255,0.7);
+  margin-top:6px;
+}
+#portfolio{
+  padding:36px 0 0;
+  text-align:left;
+}
+#portfolio h2{
+  color:var(--gold);
+  font-size:26px;
+  margin:0 0 14px;
+  text-align:center;
+}
+.grid-portfolio{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+  max-width:1100px;
+  margin:0 auto;
+}
+.grid-portfolio .item{
+  background:var(--card);
+  border-radius:10px;
+  overflow:hidden;
+  position:relative;
+  height:220px;
+  box-shadow:0 6px 18px rgba(0,0,0,0.6);
+}
+.grid-portfolio img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+  transition: transform .45s ease, filter .35s ease;
+}
+.grid-portfolio .item::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  background:linear-gradient(180deg, rgba(0,0,0,0) 30%, rgba(0,0,0,0.45) 100%);
+  pointer-events:none;
+}
+.grid-portfolio .item:hover img{
+  transform:scale(1.08);
+  filter:brightness(0.85);
+}
+.footer{
+  margin-top:34px;
+  color:rgba(255,255,255,0.6);
+  font-size:13px;
+  text-align:center;
+  padding-bottom:24px;
+}
+
+/* responsive tweaks */
+@media (min-width:900px){
+  .buttons{flex-direction:row}
+  .buttons a.btn{max-width:240px}
+  .grid-portfolio .item{height:260px}
 }
 </style>
 </head>
 <body>
+  <div class="container">
+    <header class="header">
+      <h1 class="brand">Rodrigo Mazzaro</h1>
+      <p class="lead">Tattoo Studio – Realismo • Black &amp; Grey • Since 2017</p>
+    </header>
 
-<header>
-    <h1>Rodrigo Mazzaro</h1>
-    <h2>Tattoo Studio – Realismo – Black & Grey</h2>
-</header>
+    <div class="buttons" role="navigation" aria-label="Enlaces principales">
+      <a class="btn" href="https://www.instagram.com/rodrimazzaroo/" target="_blank" rel="noopener">Instagram</a>
+      <a class="btn" href="https://wa.me/541130548042" target="_blank" rel="noopener">WhatsApp Directo</a>
+      <a class="btn" href="#portfolio" rel="noopener">Portfolio</a>
+      <a class="btn" href="https://maps.app.goo.gl/5Mw45ov3zDgb7hx89" target="_blank" rel="noopener">Ubicación</a>
+    </div>
 
-<div class="container">
-    <a class="button" href="https://www.instagram.com/rodrimazzaroo/" target="_blank">Instagram</a>
-    <a class="button" href="https://wa.me/541130548042" target="_blank">WhatsApp Directo</a>
-    <a class="button" href="https://www.instagram.com/rodrimazzaroo/" target="_blank">Portafolio</a>
-    <a class="button" href="https://maps.app.goo.gl/5Mw45ov3zDgb7hx89" target="_blank">Ubicación</a>
-    <a class="button" href="#" target="_blank">Horarios: 10:00 a 19:00</a>
-</div>
+    <p class="small">Horarios: 10:00 – 19:00</p>
 
-<div class="footer">
-    © 2025 Rodrigo Mazzaro Tattoo Studio
-</div>
+    <section id="portfolio" aria-labelledby="portfolio-title">
+      <h2 id="portfolio-title">Portfolio</h2>
+      <div class="grid-portfolio">
+        <!-- Replace these images with your own. Upload them to the repo root and keep the filenames. -->
+        <div class="item"><img src="img1.jpg" alt="Tatuaje 1"></div>
+        <div class="item"><img src="img2.jpg" alt="Tatuaje 2"></div>
+        <div class="item"><img src="img3.jpg" alt="Tatuaje 3"></div>
+        <div class="item"><img src="img4.jpg" alt="Tatuaje 4"></div>
+        <div class="item"><img src="img5.jpg" alt="Tatuaje 5"></div>
+        <div class="item"><img src="img6.jpg" alt="Tatuaje 6"></div>
+      </div>
+    </section>
 
+    <div class="footer">© 2025 Rodrigo Mazzaro Tattoo Studio</div>
+  </div>
 </body>
 </html>
