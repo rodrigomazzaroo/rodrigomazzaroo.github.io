@@ -45,10 +45,45 @@
         transform: scale(1.15);
     }
 </style>
-
+.buttons {
+    display: flex;
+    justify-content: center;
+    gap: 14px;
+    flex-wrap: wrap;
+    margin-top: 25px;
 }
-</style>
-</head>
+
+.btn {
+    background: rgba(255, 255, 255, 0.06);
+    padding: 10px 16px;
+    border-radius: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: white;
+    font-size: 15px;
+    text-decoration: none;
+    font-weight: 500;
+    backdrop-filter: blur(6px);
+    border: 1px solid rgba(255,255,255,0.12);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+}
+
+.btn:hover {
+    transform: translateY(-3px) scale(1.04);
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255,255,255,0.25);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.35);
+}
+
+.btn svg {
+    transition: all 0.25s ease;
+}
+
+.btn:hover svg {
+    transform: scale(1.15);
+}
 <body>
   <div class="container">
     <header class="header">
