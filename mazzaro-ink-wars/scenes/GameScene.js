@@ -4,18 +4,12 @@ export default class GameScene extends Phaser.Scene {
     }
 
     create() {
+        this.add.image(0, 0, "fondo").setOrigin(0, 0);
 
-        // Fondo
-        this.add.image(0, 0, "fondo")
-            .setOrigin(0, 0)
-            .setScale(1);
-
-        // Personaje
         this.player = this.physics.add.sprite(300, 300, "player", 0);
-        this.player.setScale(1); // Ajustá si está grande o chico
+        this.player.setScale(1);
         this.player.setCollideWorldBounds(true);
 
-        // Animación caminar (FRAME 0–5)
         this.anims.create({
             key: "walk",
             frames: this.anims.generateFrameNumbers("player", { start: 0, end: 5 }),
@@ -23,7 +17,6 @@ export default class GameScene extends Phaser.Scene {
             repeat: -1
         });
 
-        // Controles
         this.cursors = this.input.keyboard.createCursorKeys();
     }
 
@@ -32,7 +25,6 @@ export default class GameScene extends Phaser.Scene {
 
         this.player.setVelocity(0);
 
-        // Movimiento
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-speed);
             this.player.flipX = true;
