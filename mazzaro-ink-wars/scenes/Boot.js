@@ -1,3 +1,5 @@
+import Phaser from "https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.esm.js";
+
 export default class Boot extends Phaser.Scene {
     constructor() {
         super("Boot");
