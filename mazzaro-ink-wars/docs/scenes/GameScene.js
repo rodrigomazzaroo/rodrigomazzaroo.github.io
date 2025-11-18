@@ -29,30 +29,28 @@ export default class GameScene extends Phaser.Scene {
 
     update() {
         const speed = 180;
-
         this.player.setVelocity(0);
 
         if (this.cursors.left.isDown) {
             this.player.setVelocityX(-speed);
             this.player.flipX = true;
             this.player.play("walk", true);
-
-        } else if (this.cursors.right.isDown) {
+        }
+        else if (this.cursors.right.isDown) {
             this.player.setVelocityX(speed);
             this.player.flipX = false;
             this.player.play("walk", true);
-
-        } else if (this.cursors.up.isDown) {
+        }
+        else if (this.cursors.up.isDown) {
             this.player.setVelocityY(-speed);
             this.player.play("walk", true);
-
-        } else if (this.cursors.down.isDown) {
+        }
+        else if (this.cursors.down.isDown) {
             this.player.setVelocityY(speed);
             this.player.play("walk", true);
-
-        } else {
+        }
+        else {
             this.player.stop();
         }
     }
 }
-
