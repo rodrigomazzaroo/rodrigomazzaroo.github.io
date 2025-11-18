@@ -60,6 +60,13 @@ body {
     z-index: 999999;
 }
 
+/* ⭐ Sombra suave en CELULAR */
+@media (max-width: 600px) {
+    .header {
+        box-shadow: 0 4px 14px rgba(0,0,0,0.7);
+    }
+}
+
 .header img {
     height: 42px;
     filter: drop-shadow(0 0 12px #d4af37);
@@ -165,13 +172,19 @@ body { padding-top: 70px; }
 }
 
 /* ===========================
-   LOGO PRINCIPAL
+   ANIMACIÓN EXTRA LOGO PRINCIPAL
 =========================== */
 .logo {
     width: 340px;
     margin-top: 40px;
-    filter: drop-shadow(0 0 15px #d4af37);
-    animation: logoGlow 4s ease-in-out infinite alternate;
+    animation: logoEnter 1.8s ease forwards, logoGlow 4s ease-in-out infinite alternate;
+    opacity: 0;
+    transform: scale(0.85);
+}
+
+@keyframes logoEnter {
+    0% { opacity: 0; transform: scale(0.85); }
+    100% { opacity: 1; transform: scale(1); }
 }
 
 @keyframes logoGlow {
@@ -245,26 +258,63 @@ h1 {
 
 #portfolio-title { font-size: 32px; }
 
+/* CUADRÍCULA CUADRADA */
 .grid-portfolio {
     width: 90%;
     max-width: 1100px;
     margin: auto;
     display: grid;
-    gap: 20px;
-    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
     margin-top: 20px;
 }
 
 .grid-portfolio img {
     width: 100%;
+    height: 250px;     /* 🔥 TODAS CUADRADAS */
+    object-fit: cover; /* recorte perfecto */
     border-radius: 12px;
     border: 1px solid rgba(212,175,55,0.25);
     transition: 0.25s;
+    cursor: pointer;
 }
 
+/* Hover suave */
 .grid-portfolio img:hover {
     transform: scale(1.03);
     border-color: #d4af37;
+}
+
+/* ===========================
+   LIGHTBOX (ZOOM PROFESIONAL)
+=========================== */
+#lightbox {
+    position: fixed;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: rgba(0,0,0,0.88);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    z-index: 999999999;
+}
+
+#lightbox img {
+    max-width: 95%;
+    max-height: 95%;
+    border-radius: 14px;
+    border: 2px solid #d4af37;
+    box-shadow: 0 0 25px rgba(212,175,55,0.5);
+    animation: zoomIn 0.25s ease;
+}
+
+@keyframes zoomIn {
+    from { transform: scale(0.6); opacity: 0; }
+    to   { transform: scale(1); opacity: 1; }
+}
+
+#lightbox:active {
+    display: none;
 }
 
 .footer {
@@ -273,42 +323,6 @@ h1 {
     font-size: 14px;
     opacity: 0.8;
 }
-
-/* ===============================
-   BURBUJAS
-=============================== */
-.bubble {
-    position: absolute;
-    background: rgba(0,0,0,0.85);
-    padding: 14px 18px;
-    border-radius: 14px;
-    border: 1px solid #d4af37;
-    color: #d4af37;
-    font-size: 15px;
-    max-width: 240px;
-    line-height: 20px;
-    box-shadow: 0 0 15px rgba(212,175,55,0.35);
-    animation: bubbleFade 0.4s ease forwards;
-    z-index: 999999;
-}
-
-@keyframes bubbleFade {
-    from { opacity: 0; transform: translateY(-8px); }
-    to   { opacity: 1; transform: translateY(0); }
-}
-
-.bubble-close {
-    margin-top: 10px;
-    font-size: 13px;
-    padding: 6px 10px;
-    background: #d4af37;
-    color: black;
-    border-radius: 8px;
-    cursor: pointer;
-}
-
-.bubble-close:hover { background: #fff4c2; }
-
 </style>
 
 <script>
@@ -352,9 +366,8 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     <!-- Instagram -->
     <a class="btn" href="https://www.instagram.com/rodrimazzaroo/" target="_blank">
         <svg viewBox="0 0 24 24">
-            <path fill="currentColor" d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757 2.243-5 5-5H7zm0 2h10c1.654 0 3 
-1.346 3 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm10 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 
-10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            <path fill="currentColor" d="M7 2C4.243 2 2 4.243 2 7v10c0 2.757 2.243 5 5 5h10c2.757 0 5-2.243 5-5V7c0-2.757 2.243-5 5-5H7zm0 2h10c1.654 0 3 1.346 3 
+1.346 3v10c0 1.654-1.346 3-3 3H7c-1.654 0-3-1.346-3-3V7c0-1.654 1.346-3 3-3zm10 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
         </svg>
         Instagram
     </a>
@@ -362,11 +375,12 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     <!-- WhatsApp -->
     <a class="btn" href="https://wa.me/541130548042" target="_blank">
         <svg viewBox="0 0 32 32">
-            <path fill="currentColor" d="M16.01 2.003a13.9 13.9 0 00-11.13 22.2L2 30l6.02-2.83a13.9 13.9 0 006.01 1.39h.01a13.9 13.9 0 
-000-27.98zm7.85 19.94c-.33.94-1.95 1.79-2.73 1.9-.7.1-1.6.14-2.58-.16-.6-.18-1.37-.45-2.36-.88-4.15-1.79-6.84-5.92-7.05-6.2-.2-.28-1.68-2.23-1.68-4.26 
-0-2.03 1.04-3.03 1.41-3.45.37-.42.8-.52 1.06-.52.26 0 .53 0 .76.01.25.01.58-.09.91.7.33.79 1.12 2.75 1.22 2.95.1.21.17.46.03.74-.13.28-.2.46-.39.71-.2.25-.41.56-.58.75-.19.2-.38.41-.17.8.2.39.86 1.43 1.85 
-2.33 1.27 1.13 2.34 1.48 2.74 1.67.4.19.64.16.88-.09.25-.26 1.03-1.2 1.3-1.61.28-.41.56-.34.94-.2.39.14 2.47 1.16 2.89 
-1.37.42.21.7.32.8.5.1.18.1.95-.23 1.89z"/>
+            <path fill="currentColor" d="M16.01 2.003a13.9 13.9 0 00-11.13 22.2L2 30l6.02-2.83a13.9 13.9 0 006.01 1.39h.01a13.9 13.9 0 000-27.98zm7.85 19.94c-.33.94-1.95 1.79-2.73 
+1.9-.7.1-1.6.14-2.58-.16-.6-.18-1.37-.45-2.36-.88-4.15-1.79-6.84-5.92-7.05-6.2-.2-.28-1.68-2.23-1.68-4.26 
+0-2.03 1.04-3.03 1.41-3.45.37-.42.8-.52 1.06-.52.26 0 .53 0 .76.01.25.01.58-.09.91.7.33.79 
+1.12 2.75 1.22 2.95.1.21.17.46.03.74-.13.28-.2.46-.39.71-.2.25-.41.56-.58.75-.19.2-.38.41-.17.8.2.39.86 
+1.43 1.85 2.33 1.27 1.13 2.34 1.48 2.74 1.67.4.19.64.16.88-.09.25-.26 1.03-1.2 1.3-1.61.28-.41.56-.34.94-.2.39.14 
+2.47 1.16 2.89 1.37.42.21.7.32.8.5.1.18.1.95-.23 1.89z"/>
         </svg>
         Turnos y Consultas
     </a>
@@ -385,7 +399,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     </a>
 
     <!-- TikTok -->
-    <a class="btn" href="https://www.tiktok.com/@rodrigomazzaro0" target="_blank">
+    <a class="btn" href="https://www.tiktok.com/@rodrimazzaro0" target="_blank">
         <svg viewBox="0 0 24 24"><path fill="currentColor" d="M12 2h3.1c.2 1.2.9 2.3 1.9 3 1 .7 2.2 1 3.4 1v3.1c-1.7 0-3.3-.5-4.7-1.3v7.4a6.6 6.6 0 
 11-6.6-6.6c.5 0 1 .1 1.5.2V9a9.6 9.6 0 00-1.5-.1 9.7 9.7 0 100 19.3z"/></svg>
         TikTok
@@ -415,59 +429,29 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     </div>
 </section>
 
+<!-- LIGHTBOX -->
+<div id="lightbox" onclick="cerrarLightbox()">
+    <img id="lightbox-img">
+</div>
+
 <div class="footer">© 2017 Rodrigo Mazzaro</div>
 
-<!-- BURBUJAS -->
+<!-- ⭐ SCRIPT LIGHTBOX (zoom profesional) -->
 <script>
-window.onload = () => {
-    if (sessionStorage.getItem("tourDone")) return;
+const imgs = document.querySelectorAll(".grid-portfolio img");
+const lightbox = document.getElementById("lightbox");
+const lightboxImg = document.getElementById("lightbox-img");
 
-    const instagramBtn = document.querySelector('.buttons a:nth-child(1)');
-    const whatsappBtn  = document.querySelector('.buttons a:nth-child(2)');
-    const portfolioBtn = document.querySelector('.buttons a:nth-child(3)');
+imgs.forEach(img => {
+    img.addEventListener("click", () => {
+        lightbox.style.display = "flex";
+        lightboxImg.src = img.src;
+    });
+});
 
-    const pos = el => {
-        const r = el.getBoundingClientRect();
-        return { top: r.top + window.scrollY, left: r.left + window.scrollX };
-    };
-
-    function createBubble(text, element) {
-        return new Promise(resolve => {
-            const b = document.createElement('div');
-            b.className = 'bubble';
-            b.innerHTML = text + '<div class="bubble-close">Entendido</div>';
-            document.body.appendChild(b);
-
-            const p = pos(element);
-            b.style.top  = (p.top - 90) + "px";
-            b.style.left = (p.left - 20) + "px";
-
-            b.querySelector(".bubble-close").onclick = () => {
-                b.remove();
-                resolve();
-            };
-
-            setTimeout(() => {
-                if (document.body.contains(b)) {
-                    b.remove();
-                    resolve();
-                }
-            }, 6000);
-        });
-    }
-
-    async function startTour() {
-        await createBubble("Seguime en Instagram para ver mis últimos trabajos.", instagramBtn);
-        await new Promise(r=>setTimeout(r,800)); 
-        await createBubble("Pedí tu turno o consulta directamente desde acá.", whatsappBtn);
-        await new Promise(r=>setTimeout(r,800));
-        await createBubble("Mirá mi portfolio completo de trabajos.", portfolioBtn);
-
-        sessionStorage.setItem("tourDone", "1");
-    }
-
-    setTimeout(startTour, 1500);
-};
+function cerrarLightbox() {
+    lightbox.style.display = "none";
+}
 </script>
 
 <!-- ⭐⭐ SCRIPT PARA FRASES ROTATIVAS ⭐⭐ -->
