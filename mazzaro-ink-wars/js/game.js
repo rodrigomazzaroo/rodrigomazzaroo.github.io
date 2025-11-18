@@ -59,6 +59,8 @@ class Enemy {
     const start = getPathPoint(0);
     this.x = start.x;
     this.y = start.y;
+
+    this.radius = 15;
   }
 
   update(dt) {
@@ -83,9 +85,16 @@ class Enemy {
   }
 
   draw() {
+    const gradient = ctx.createRadialGradient(
+      this.x, this.y, 2,
+      this.x, this.y, this.radius
+    );
+    gradient.addColorStop(0, "#ff66ff");
+    gradient.addColorStop(1, "#8000ff");
+
     ctx.beginPath();
-    ctx.fillStyle = "#A000FF";
-    ctx.arc(this.x, this.y, 15, 0, Math.PI * 2);
+    ctx.fillStyle = gradient;
+    ctx.arc(this.x, this.y, this.radius, 0, Math.PI * 2);
     ctx.fill();
   }
 }
@@ -165,8 +174,8 @@ function render() {
 // ------------------------------------
 function drawBackground() {
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
-  grad.addColorStop(0, "#050505");
-  grad.addColorStop(1, "#151515");
+  grad.addColorStop(0, "#0a0a0a");
+  grad.addColorStop(1, "#000000");
   ctx.fillStyle = grad;
   ctx.fillRect(0, 0, canvas.width, canvas.height);
 }
@@ -182,8 +191,8 @@ function drawMenu() {
 }
 
 function drawPath() {
-  ctx.strokeStyle = "#333";
-  ctx.lineWidth = 20;
+  ctx.strokeStyle = "#444";
+  ctx.lineWidth = 22;
   ctx.lineCap = "round";
 
   ctx.beginPath();
