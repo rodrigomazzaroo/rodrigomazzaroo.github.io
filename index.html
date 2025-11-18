@@ -42,7 +42,7 @@ body {
 }
 
 /* ===========================
-   HEADER FIJO PREMIUM (NUEVO)
+   HEADER FIJO PREMIUM
 =========================== */
 .header {
     position: fixed;
@@ -86,7 +86,7 @@ body {
     border-color: #d4af37;
 }
 
-/* ⭐⭐⭐ NUEVO: FRASE ROTATIVA EN EL HEADER ⭐⭐⭐ */
+/* ⭐⭐⭐ FRASE ROTATIVA EN EL HEADER ⭐⭐⭐ */
 .header-frase {
     position: absolute;
     left: 50%;
@@ -97,6 +97,34 @@ body {
     text-shadow: 0 0 6px black;
     opacity: 1;
     transition: opacity 0.5s ease;
+    white-space: nowrap;
+}
+
+/* 📱 MODO CELULAR — se reacomoda todo automáticamente */
+@media (max-width: 600px) {
+    .header {
+        height: 92px;
+        flex-direction: column;
+        justify-content: center;
+        gap: 4px;
+        padding-top: 6px;
+    }
+
+    .header img {
+        height: 40px;
+    }
+
+    .header-frase {
+        position: static;
+        transform: none;
+        font-size: 14px;
+        margin-top: 2px;
+        order: 2;
+    }
+
+    .header .h-links {
+        order: 3;
+    }
 }
 
 /* ESPACIADO PARA QUE EL HEADER NO TAPE NADA */
@@ -294,15 +322,17 @@ document.addEventListener("contextmenu", e => e.preventDefault());
        HEADER FIJO + FRASES
 =========================== -->
 <div class="header">
+
     <img src="logo.png">
 
-    <!-- ⭐ NUEVA FRASE CENTRAL ⭐ -->
+    <!-- ⭐ FRASE ROTATIVA ⭐ -->
     <div class="header-frase" id="header-frase">El momento es ahora.</div>
 
     <div class="h-links">
         <a href="https://wa.me/541130548042" target="_blank">Turnos</a>
         <a href="https://www.instagram.com/rodrimazzaroo/" target="_blank">Instagram</a>
     </div>
+
 </div>
 
 <!-- PRELOADER -->
