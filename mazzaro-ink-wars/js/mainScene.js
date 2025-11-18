@@ -5,8 +5,7 @@ export default class MainScene extends Phaser.Scene {
 
     preload() {
         // Fondo temporal tipo pixel RPG
-        this.load.image("grass", "https://i.imgur.com/lkZSnYW.png");
-
+        this.load.image("grass", "assets/fondo.png");
         // Personaje temporal pixel-art
         this.load.spritesheet("hero",
             "https://i.imgur.com/Z7x7pOP.png",
