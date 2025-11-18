@@ -6,9 +6,8 @@ export default class Boot extends Phaser.Scene {
     preload() {
         this.load.image("fondo", "assets/fondo.jpg");
 
-        // Cargar spritesheet del jugador
         this.load.spritesheet("player", "assets/player.png", {
-            frameWidth: 96,   
+            frameWidth: 96,
             frameHeight: 96
         });
     }
