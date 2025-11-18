@@ -4,10 +4,6 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create() {
-
-        // Fondo con color gris oscuro
-        this.cameras.main.setBackgroundColor("#1a1a1a");
-
         this.add.text(20, 20, "MAZZARO INK WARS", {
             fontFamily: "Arial",
             fontSize: 36,
