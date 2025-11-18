@@ -20,13 +20,16 @@
 <body>
 
 <script type="module">
-import MainScene from "./js/mainScene.js";
+
+import Boot from "./js/Boot.js";
+import GameScene from "./js/GameScene.js";
+// import MainMenu from "./js/MainMenu.js";  // solo si existe
 
 const config = {
     type: Phaser.AUTO,
     width: window.innerWidth,
     height: window.innerHeight,
-    backgroundColor: "#1a1a1a",
+
     physics: {
         default: "arcade",
         arcade: {
@@ -34,7 +37,9 @@ const config = {
             debug: false
         }
     },
-    scene: [MainScene]
+
+    // ❗ MUY IMPORTANTE
+    scene: [Boot, GameScene] 
 };
 
 new Phaser.Game(config);
