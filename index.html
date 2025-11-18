@@ -416,7 +416,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     </a>
 
     <!-- TikTok -->
-    <a class="btn" href="https://www.tiktok.com/@rodrigomazzaro0" target="_blank">
+    <a class="btn" href="https://www.tiktok.com/@rodrimazzaro0" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 2h3.1c.2 1.2.9 2.3 
 1.9 3 1 .7 2.2 1 3.4 1v3.1c-1.7 0-3.3-.5-4.7-1.3v7.4a6.6 
 6.6 0 11-6.6-6.6c.5 0 1 
@@ -481,13 +481,13 @@ function cerrarLightbox() {
 }
 </script>
 
-<!-- ⭐ SCRIPT PARA FRASES ROTATIVAS -->
+<!-- ⭐ SCRIPT PARA FRASES ROTATIVAS CON TIEMPOS PERSONALIZADOS -->
 <script>
 const frases = [
-    "Seguime en mis diferentes redes",
-    "El momento es ahora.",
-    "No lo patees más.",
-    "Te lo mereces!"
+    { text: "Seguime en mis diferentes redes", tiempo: 10000 },
+    { text: "El momento es ahora.", tiempo: 3000 },
+    { text: "No lo patees más.", tiempo: 3000 },
+    { text: "Te lo mereces!", tiempo: 3000 }
 ];
 
 let i = 0;
@@ -495,14 +495,19 @@ const fraseBox = document.getElementById("header-frase");
 
 function cambiarFrase() {
     fraseBox.style.opacity = 0;
+
     setTimeout(() => {
-        fraseBox.textContent = frases[i];
+        fraseBox.textContent = frases[i].text;
         fraseBox.style.opacity = 1;
+
+        const duracion = frases[i].tiempo;
         i = (i + 1) % frases.length;
+
+        setTimeout(cambiarFrase, duracion);
     }, 500);
 }
 
-setInterval(cambiarFrase, 3000);
+cambiarFrase();
 </script>
 
 </body>
