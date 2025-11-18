@@ -4,15 +4,16 @@ export default class MainMenu extends Phaser.Scene {
     }
 
     create() {
+
         this.add.text(50, 50, "MAZZARO INK WARS", {
             fontFamily: "Arial",
-            fontSize: 48,
+            fontSize: 40,
             color: "#ffffff"
         });
 
-        this.add.text(50, 120, "Tocá para comenzar", {
+        this.add.text(50, 120, "Tocá para iniciar", {
             fontFamily: "Arial",
-            fontSize: 28,
+            fontSize: 30,
             color: "#cccccc"
         });
 
@@ -21,4 +22,3 @@ export default class MainMenu extends Phaser.Scene {
         });
     }
 }
-
