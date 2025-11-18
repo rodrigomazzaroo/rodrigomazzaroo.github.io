@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Mazzaro Ink Wars</title>
 
+<!-- Phaser 3 -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.min.js"></script>
+
 <style>
     body {
         margin: 0;
@@ -18,7 +21,6 @@
 
 <script type="module">
 
-import Phaser from "https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.esm.js";
 import Boot from "./scenes/Boot.js";
 import MainMenu from "./scenes/MainMenu.js";
 import GameScene from "./scenes/GameScene.js";
@@ -28,6 +30,7 @@ const config = {
     width: window.innerWidth,
     height: window.innerHeight,
     backgroundColor: "#000000",
+
     physics: {
         default: "arcade",
         arcade: {
@@ -35,6 +38,7 @@ const config = {
             debug: false
         }
     },
+
     scene: [Boot, MainMenu, GameScene]
 };
 
