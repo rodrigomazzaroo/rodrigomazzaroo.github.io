@@ -5,7 +5,6 @@ export default class Boot extends Phaser.Scene {
 
     preload() {
         this.load.image("fondo", "assets/fondo.jpg");
-
         this.load.spritesheet("player", "assets/player.png", {
             frameWidth: 96,
             frameHeight: 96
