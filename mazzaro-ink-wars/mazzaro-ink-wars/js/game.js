@@ -1,7 +1,9 @@
+// ------------------------------------
+// CONFIGURACIÓN DEL CANVAS
+// ------------------------------------
 const canvas = document.getElementById("gameCanvas");
 const ctx = canvas.getContext("2d");
 
-// Ajuste responsivo del tamaño
 function resize() {
   canvas.width = window.innerWidth;
   canvas.height = window.innerHeight;
@@ -9,7 +11,9 @@ function resize() {
 resize();
 window.addEventListener("resize", resize);
 
-// Estados del juego
+// ------------------------------------
+// ESTADOS DEL JUEGO
+// ------------------------------------
 const GAME_STATE = {
   MENU: "menu",
   GAME: "game",
@@ -20,19 +24,86 @@ const GAME_STATE = {
 let state = GAME_STATE.MENU;
 let lastTime = 0;
 
-// Variables del juego
+// VARIABLES DEL JUEGO
 let level = 1;
 let life = 3;
 let ink = 100;
 
-// Inicio
+// ------------------------------------
+// RUTA DEL ENEMIGO (camino en S)
+// ------------------------------------
+const pathPoints = [
+  { x: 0.1, y: 0.1 },
+  { x: 0.6, y: 0.2 },
+  { x: 0.4, y: 0.5 },
+  { x: 0.2, y: 0.8 },
+  { x: 0.9, y: 0.9 }
+];
+
+function getPathPoint(i) {
+  return {
+    x: pathPoints[i].x * canvas.width,
+    y: pathPoints[i].y * canvas.height,
+  };
+}
+
+// ------------------------------------
+// CLASE ENEMIGO
+// ------------------------------------
+class Enemy {
+  constructor() {
+    this.speed = 120; 
+    this.hp = 30;
+    this.currentPoint = 0;
+
+    const start = getPathPoint(0);
+    this.x = start.x;
+    this.y = start.y;
+  }
+
+  update(dt) {
+    const target = getPathPoint(this.currentPoint + 1);
+
+    const dx = target.x - this.x;
+    const dy = target.y - this.y;
+    const dist = Math.hypot(dx, dy);
+
+    if (dist < 4) {
+      this.currentPoint++;
+      if (this.currentPoint >= pathPoints.length - 1) {
+        life--;
+        return true;
+      }
+      return false;
+    }
+
+    this.x += (dx / dist) * this.speed * dt;
+    this.y += (dy / dist) * this.speed * dt;
+    return false;
+  }
+
+  draw() {
+    ctx.beginPath();
+    ctx.fillStyle = "#A000FF";
+    ctx.arc(this.x, this.y, 15, 0, Math.PI * 2);
+    ctx.fill();
+  }
+}
+
+// LISTA ENEMIGOS
+let enemies = [];
+let enemyTimer = 0;
+
+// ------------------------------------
+// LOOP PRINCIPAL DEL JUEGO
+// ------------------------------------
 function init() {
   requestAnimationFrame(gameLoop);
 }
 
-function gameLoop(timestamp) {
-  const dt = (timestamp - lastTime) / 1000;
-  lastTime = timestamp;
+function gameLoop(ts) {
+  const dt = (ts - lastTime) / 1000;
+  lastTime = ts;
 
   update(dt);
   render();
@@ -40,21 +111,34 @@ function gameLoop(timestamp) {
   requestAnimationFrame(gameLoop);
 }
 
+// ------------------------------------
+// UPDATE
+// ------------------------------------
 function update(dt) {
   switch (state) {
     case GAME_STATE.MENU:
       break;
 
     case GAME_STATE.GAME:
-      // Acá más adelante: enemigos, torres, oleadas, puzzles
-      break;
+      enemyTimer += dt;
 
-    case GAME_STATE.PUZZLE:
-      // Acá irán los acertijos
+      if (enemyTimer > 1.5) {
+        enemies.push(new Enemy());
+        enemyTimer = 0;
+      }
+
+      enemies = enemies.filter(e => !e.update(dt));
+
+      if (life <= 0) {
+        state = GAME_STATE.GAME_OVER;
+      }
       break;
   }
 }
 
+// ------------------------------------
+// RENDER
+// ------------------------------------
 function render() {
   ctx.clearRect(0, 0, canvas.width, canvas.height);
 
@@ -64,16 +148,21 @@ function render() {
     case GAME_STATE.MENU:
       drawMenu();
       break;
+
     case GAME_STATE.GAME:
       drawPath();
+      drawEnemies();
       break;
-    case GAME_STATE.PUZZLE:
-      drawPath();
-      drawPuzzleOverlay();
+
+    case GAME_STATE.GAME_OVER:
+      drawGameOver();
       break;
   }
 }
 
+// ------------------------------------
+// FUNCIONES DE DIBUJO
+// ------------------------------------
 function drawBackground() {
   const grad = ctx.createLinearGradient(0, 0, canvas.width, canvas.height);
   grad.addColorStop(0, "#050505");
@@ -84,8 +173,8 @@ function drawBackground() {
 
 function drawMenu() {
   ctx.fillStyle = "#fff";
+  ctx.font = "48px serif";
   ctx.textAlign = "center";
-  ctx.font = "48px Cinzel, serif";
   ctx.fillText("Mazzaro Ink Wars", canvas.width / 2, canvas.height / 2 - 40);
 
   ctx.font = "22px Arial";
@@ -110,16 +199,20 @@ function drawPath() {
   ctx.stroke();
 }
 
-function drawPuzzleOverlay() {
-  ctx.fillStyle = "rgba(0,0,0,0.6)";
-  ctx.fillRect(0, 0, canvas.width, canvas.height);
-
-  ctx.fillStyle = "#fff";
-  ctx.textAlign = "center";
-  ctx.font = "32px Arial";
-  ctx.fillText("Puzzle en progreso...", canvas.width / 2, canvas.height / 2);
+function drawEnemies() {
+  enemies.forEach(e => e.draw());
 }
 
+function drawGameOver() {
+  ctx.fillStyle = "#fff";
+  ctx.font = "48px serif";
+  ctx.textAlign = "center";
+  ctx.fillText("GAME OVER", canvas.width / 2, canvas.height / 2);
+}
+
+// ------------------------------------
+// EVENTOS
+// ------------------------------------
 canvas.addEventListener("click", () => {
   if (state === GAME_STATE.MENU) {
     state = GAME_STATE.GAME;
