@@ -1,36 +1,45 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Mazzaro Ink Wars</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mazzaro Ink Wars</title>
 
-  <!-- 🔥 Anti-Cache: fuerza a cargar siempre la última versión -->
-  <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate" />
-  <meta http-equiv="Pragma" content="no-cache" />
-  <meta http-equiv="Expires" content="0" />
+<!-- PHASER 3 -->
+<script src="https://cdn.jsdelivr.net/npm/phaser@3/dist/phaser.js"></script>
 
-  <style>
+<style>
     body {
-      margin: 0;
-      background: #050505;
-      overflow: hidden;
+        margin: 0;
+        overflow: hidden;
+        background: #000;
     }
-
-    #gameCanvas {
-      display: block;
-      background: radial-gradient(circle at center, #161616, #050505);
-    }
-  </style>
+</style>
 </head>
 
 <body>
 
-  <!-- 🔥 Canvas del juego -->
-  <canvas id="gameCanvas"></canvas>
+<script type="module">
+import MainScene from "./js/mainScene.js";
 
-  <!-- 🔥 Se agrega ?v=2.0 para evitar caché -->
-  <script src="js/game.js?v=2.0"></script>
+const config = {
+    type: Phaser.AUTO,
+    width: window.innerWidth,
+    height: window.innerHeight,
+    backgroundColor: "#1a1a1a",
+    physics: {
+        default: "arcade",
+        arcade: {
+            gravity: { y: 0 },
+            debug: false
+        }
+    },
+    scene: [MainScene]
+};
+
+new Phaser.Game(config);
+
+</script>
 
 </body>
 </html>
