@@ -320,6 +320,99 @@ h1 {
     opacity: 0.8;
 }
 
+/* ===========================
+   SECCIÓN EVENTO (USO ÚNICO)
+=========================== */
+#evento {
+    width: 90%;
+    max-width: 920px;
+    margin: 42px auto 0 auto;
+    padding: 18px 18px 22px 18px;
+    background: rgba(0,0,0,0.55);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 16px;
+    backdrop-filter: blur(6px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.55);
+}
+
+#evento h2 {
+    margin: 6px 0 10px 0;
+    font-size: 30px;
+    letter-spacing: 1px;
+    filter: drop-shadow(0 0 10px #000);
+}
+
+#evento p {
+    margin: 10px 0;
+    font-size: 16px;
+    line-height: 1.35;
+    color: #d4af37;
+    text-shadow: 0 0 6px black;
+}
+
+.evento-badges {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+    margin-top: 10px;
+}
+
+.badge {
+    display: inline-block;
+    padding: 8px 12px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(212,175,55,0.25);
+    font-size: 14px;
+}
+
+.evento-cta {
+    margin-top: 14px;
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+}
+
+.btn-evento {
+    background: rgba(212,175,55,0.25);
+    padding: 14px 18px;
+    border-radius: 14px;
+    color: #d4af37;
+    font-size: 16px;
+    text-decoration: none;
+    font-weight: 800;
+    border: 1px solid rgba(212,175,55,0.55);
+    transition: 0.25s;
+    backdrop-filter: blur(6px);
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.btn-evento:hover {
+    transform: translateY(-3px) scale(1.04);
+    background: rgba(212,175,55,0.32);
+    border-color: #d4af37;
+}
+
+.btn-evento svg {
+    width: 22px;
+    height: 22px;
+    fill: #ffffff;
+    transition: 0.25s;
+}
+
+.btn-evento:hover svg {
+    fill: #d4af37;
+}
+
+.evento-mini {
+    opacity: 0.9;
+    font-size: 13px !important;
+}
+
 </style>
 
 <!-- PARALLAX REAL CON MOUSE / TOUCH -->
@@ -424,6 +517,44 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 </a>
 </div>
 
+<!-- ===========================
+     SECCIÓN EVENTO 21/02
+=========================== -->
+<section id="evento">
+    <h2>💉 Tatuajes en vivo – 21/02</h2>
+
+    <p>
+        Hoy voy a estar tatuando en el evento con <strong>cupos limitados</strong>.
+        Para anotarte, completá el formulario y quedás registrado/a.
+    </p>
+
+    <div class="evento-badges">
+        <span class="badge">✅ Lista por orden de registro</span>
+        <span class="badge">⏳ Cupos limitados</span>
+        <span class="badge">📲 Escaneá el QR y anotate</span>
+    </div>
+
+    <div class="evento-cta">
+        <a class="btn-evento" href="TU_LINK_DEL_FORMULARIO" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8l-6-6zm1 7V3.5L19.5 9H15zM8 13h8v2H8v-2zm0 4h8v2H8v-2zm0-8h5v2H8V9z"/>
+            </svg>
+            ANOTARME (Lista del evento)
+        </a>
+
+        <a class="btn-evento" href="https://www.instagram.com/rodrimazzaroo/" target="_blank">
+            <svg viewBox="0 0 24 24">
+                <path d="M7 2C4.24 2 2 4.24 2 7v10c0 2.76 2.24 5 5 5h10c2.76 0 5-2.24 5-5V7c0-2.76-2.24-5-5-5H7zm0 2h10c1.65 0 3 1.35 3 3v10c0 1.65-1.35 3-3 3H7c-1.65 0-3-1.35-3-3V7c0-1.65 1.35-3 3-3zm10 1a1 1 0 100 2 1 1 0 000-2zM12 7a5 5 0 100 10 5 5 0 000-10zm0 2a3 3 0 110 6 3 3 0 010-6z"/>
+            </svg>
+            Ver trabajos (Instagram)
+        </a>
+    </div>
+
+    <p class="evento-mini">
+        Rodrigo Mazzaro Tattoo Studio – Since 2017
+    </p>
+</section>
+
 <!-- Portfolio -->
 <section id="portfolio">
     <h2 id="portfolio-title">Portfolio</h2>
@@ -509,3 +640,4 @@ cambiarFrase();
 
 </body>
 </html>
+
