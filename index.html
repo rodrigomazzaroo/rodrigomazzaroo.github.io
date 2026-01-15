@@ -286,6 +286,89 @@ h1 {
 }
 
 /* ===========================
+   CUIDADOS (NUEVA SECCIÓN)
+=========================== */
+#cuidados { margin-top: 55px; }
+
+#cuidados-title { font-size: 32px; }
+
+.cuidados-sub {
+    width: 90%;
+    max-width: 900px;
+    margin: 10px auto 18px auto;
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.55;
+}
+
+.cuidados-grid {
+    width: 90%;
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    gap: 14px;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+}
+
+.cuidados-card {
+    text-align: left;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 14px;
+    padding: 16px 16px 14px 16px;
+    backdrop-filter: blur(6px);
+    transition: 0.25s;
+}
+
+.cuidados-card:hover {
+    transform: translateY(-2px);
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.12);
+}
+
+.cuidados-card h3 {
+    margin: 0 0 10px 0;
+    font-size: 18px;
+    letter-spacing: 0.5px;
+}
+
+.cuidados-card ul {
+    margin: 0;
+    padding-left: 18px;
+    line-height: 1.45;
+    opacity: 0.95;
+}
+
+.cuidados-card li { margin: 7px 0; }
+
+.btn-mini {
+    display: inline-block;
+    margin-top: 12px;
+    padding: 10px 14px;
+    border-radius: 999px;
+    background: rgba(0,0,0,0.35);
+    border: 1px solid rgba(212,175,55,0.25);
+    color: #d4af37;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+}
+
+.btn-mini:hover {
+    transform: translateY(-2px);
+    background: rgba(212,175,55,0.25);
+    border-color: #d4af37;
+}
+
+/* Responsive cuidados */
+@media (max-width: 980px) {
+    .cuidados-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+}
+@media (max-width: 520px) {
+    .cuidados-grid { grid-template-columns: 1fr; }
+}
+
+/* ===========================
    LIGHTBOX (ZOOM PROFESIONAL)
 =========================== */
 #lightbox {
@@ -357,6 +440,8 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     <div class="h-links">
         <a href="https://wa.me/541130548042" target="_blank">Turnos</a>
         <a href="https://www.instagram.com/rodrimazzaroo/" target="_blank">Instagram</a>
+        <!-- ✅ NUEVO: link directo a Cuidados -->
+        <a href="#cuidados">Cuidados</a>
     </div>
 
 </div>
@@ -406,6 +491,14 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Portfolio
     </a>
 
+    <!-- ✅ NUEVO: Cuidados (botón grande) -->
+    <a class="btn" href="#cuidados">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2a4 4 0 014 4c0 1.2-.5 2.3-1.3 3.1l-.7.7V12h2a2 2 0 012 2v6H6v-6a2 2 0 012-2h2V9.8l-.7-.7A4.3 4.3 0 018 6a4 4 0 014-4zm-2 10H8v6h8v-6h-2v2h-4v-2z"/>
+        </svg>
+        Cuidados
+    </a>
+
     <!-- Ubicación -->
     <a class="btn" href="https://maps.app.goo.gl/tY1Vg2tEjphm97ci6" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 
@@ -449,7 +542,57 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <img src="img18.jpg">
         <img src="img19.jpg">
         <img src="img20.jpg">
-        
+    </div>
+</section>
+
+<!-- ===========================
+   ✅ NUEVA SECCIÓN: CUIDADOS
+=========================== -->
+<section id="cuidados">
+    <h2 id="cuidados-title">Cuidados</h2>
+    <p class="cuidados-sub">
+        Para que el tatuaje cure bien y quede nítido, seguí estos pasos. Si tenés dudas, escribime por WhatsApp.
+    </p>
+
+    <div class="cuidados-grid">
+
+        <div class="cuidados-card">
+            <h3>Primeras 24 hs</h3>
+            <ul>
+                <li>Mantené el film el tiempo que te indiqué.</li>
+                <li>Lavá con agua tibia y jabón neutro (sin frotar).</li>
+                <li>Secá con toques (papel o toalla limpia).</li>
+            </ul>
+        </div>
+
+        <div class="cuidados-card">
+            <h3>Días 2 a 7</h3>
+            <ul>
+                <li>Lavá 2 a 3 veces por día.</li>
+                <li>Aplicá una capa fina de crema (sin excederte).</li>
+                <li>Ropa suelta: evitá roce y transpiración excesiva.</li>
+            </ul>
+        </div>
+
+        <div class="cuidados-card">
+            <h3>Lo que NO</h3>
+            <ul>
+                <li>No rascar ni arrancar cascaritas.</li>
+                <li>No pileta / mar / jacuzzi (mínimo 15 días).</li>
+                <li>No sol directo ni cama solar (mínimo 30 días).</li>
+            </ul>
+        </div>
+
+        <div class="cuidados-card">
+            <h3>Señales a vigilar</h3>
+            <ul>
+                <li>Enrojecimiento fuerte que empeora, calor o dolor intenso.</li>
+                <li>Pus, mal olor o fiebre.</li>
+                <li>Si pasa, escribime por WhatsApp.</li>
+            </ul>
+            <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">Hablar por WhatsApp</a>
+        </div>
+
     </div>
 </section>
 
