@@ -369,6 +369,62 @@ h1 {
 }
 
 /* ===========================
+   MI HISTORIA (NUEVA SECCIÓN)
+=========================== */
+#historia { margin-top: 55px; }
+
+#historia-title { font-size: 32px; }
+
+.historia-wrap {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 16px;
+    padding: 22px 20px;
+    backdrop-filter: blur(6px);
+    text-align: left;
+    line-height: 1.75;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+.historia-wrap p {
+    margin: 0 0 12px 0;
+}
+
+.historia-wrap p:last-child {
+    margin-bottom: 0;
+}
+
+.historia-firma {
+    margin-top: 16px;
+    padding-top: 14px;
+    border-top: 1px solid rgba(212,175,55,0.18);
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 14px;
+    flex-wrap: wrap;
+}
+
+.historia-firma .since {
+    font-size: 14px;
+    opacity: 0.85;
+}
+
+.historia-firma .cta {
+    display: inline-flex;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+.historia-firma .cta a {
+    text-decoration: none;
+}
+
+/* ===========================
    LIGHTBOX (ZOOM PROFESIONAL)
 =========================== */
 #lightbox {
@@ -442,6 +498,8 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <a href="https://www.instagram.com/rodrimazzaroo/" target="_blank">Instagram</a>
         <!-- ✅ NUEVO: link directo a Cuidados -->
         <a href="#cuidados">Cuidados</a>
+        <!-- ✅ NUEVO: link directo a Mi Historia -->
+        <a href="#historia">Mi historia</a>
     </div>
 
 </div>
@@ -497,6 +555,14 @@ document.addEventListener("contextmenu", e => e.preventDefault());
             <path d="M12 2a4 4 0 014 4c0 1.2-.5 2.3-1.3 3.1l-.7.7V12h2a2 2 0 012 2v6H6v-6a2 2 0 012-2h2V9.8l-.7-.7A4.3 4.3 0 018 6a4 4 0 014-4zm-2 10H8v6h8v-6h-2v2h-4v-2z"/>
         </svg>
         Cuidados
+    </a>
+
+    <!-- ✅ NUEVO: Mi historia (botón grande) -->
+    <a class="btn" href="#historia">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm-1 5v10h2V8h-2zm1 12a1.25 1.25 0 100-2.5A1.25 1.25 0 0012 20z"/>
+        </svg>
+        Mi historia
     </a>
 
     <!-- Ubicación -->
@@ -593,6 +659,45 @@ document.addEventListener("contextmenu", e => e.preventDefault());
             <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">Hablar por WhatsApp</a>
         </div>
 
+    </div>
+</section>
+
+<!-- ===========================
+   ✅ NUEVA SECCIÓN: MI HISTORIA
+=========================== -->
+<section id="historia">
+    <h2 id="historia-title">Mi historia</h2>
+
+    <div class="historia-wrap">
+        <p>
+            Crecí en el barrio, con un lápiz en la mano mucho antes de imaginar que el arte iba a ser mi forma de vida.
+            Dibujar siempre fue mi manera de expresarme, de observar y de entender lo que me rodea.
+        </p>
+        <p>
+            Con el tiempo me formé en distintas disciplinas: estudié arte, realicé cursos y me desarrollé en el diseño gráfico,
+            aprendiendo a valorar la técnica, la composición y el detalle. Ese recorrido fue clave para construir una base sólida,
+            pero todavía sentía que faltaba algo más profundo.
+        </p>
+        <p>
+            En 2017 tomé una máquina de tatuar por primera vez. No sabía nada.
+            Solo tenía respeto por el oficio, ganas de aprender y la convicción de ir hasta el fondo.
+        </p>
+        <p>
+            Aprendí desde abajo, equivocándome, practicando y corrigiendo. Con el paso del tiempo entendí que tatuar no es solo
+            marcar la piel, sino transformar una idea, una emoción o un momento en algo permanente.
+        </p>
+        <p>
+            Hoy trabajo con la misma filosofía: cada tatuaje merece tiempo, compromiso y responsabilidad.
+            Porque no se trata solo de tatuajes, sino de historias que las personas eligen llevar para siempre.
+        </p>
+
+        <div class="historia-firma">
+            <div class="since">Rodrigo Mazzaro Tattoo Studio — Since 2017</div>
+            <div class="cta">
+                <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">Consultar por WhatsApp</a>
+                <a class="btn-mini" href="#portfolio">Ver trabajos</a>
+            </div>
+        </div>
     </div>
 </section>
 
