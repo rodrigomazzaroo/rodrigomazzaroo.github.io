@@ -425,6 +425,103 @@ h1 {
 }
 
 /* ===========================
+   PREGUNTAS CLAVES (NUEVA SECCIÓN)
+=========================== */
+#preguntas-claves { margin-top: 55px; }
+
+#faq-title { font-size: 32px; }
+
+.faq-wrap {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.faq-sub {
+    margin: 10px 0 18px 0;
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.55;
+    text-align: center;
+}
+
+.faq-item {
+    margin: 12px 0;
+}
+
+.faq-item details {
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 16px;
+    padding: 0;
+    backdrop-filter: blur(6px);
+    overflow: hidden;
+    transition: 0.25s;
+}
+
+.faq-item details:hover {
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.10);
+}
+
+.faq-item summary {
+    list-style: none;
+    cursor: pointer;
+    padding: 16px 18px;
+    font-size: 16px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 14px;
+    outline: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+    display: none;
+}
+
+.faq-item summary .q {
+    display: inline-block;
+}
+
+.faq-item summary .icon {
+    width: 26px;
+    height: 26px;
+    border-radius: 999px;
+    border: 1px solid rgba(212,175,55,0.25);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    flex: 0 0 auto;
+    transition: 0.25s;
+    background: rgba(0,0,0,0.35);
+}
+
+.faq-item details[open] summary .icon {
+    transform: rotate(45deg);
+    border-color: #d4af37;
+    background: rgba(212,175,55,0.18);
+}
+
+.faq-item .answer {
+    padding: 0 18px 18px 18px;
+    font-size: 15px;
+    line-height: 1.65;
+    opacity: 0.95;
+}
+
+.faq-cta {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===========================
    LIGHTBOX (ZOOM PROFESIONAL)
 =========================== */
 #lightbox {
@@ -500,6 +597,8 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <a href="#cuidados">Cuidados</a>
         <!-- ✅ NUEVO: link directo a Mi Historia -->
         <a href="#historia">Mi historia</a>
+        <!-- ✅ NUEVO: link directo a Preguntas Claves -->
+        <a href="#preguntas-claves">Preguntas</a>
     </div>
 
 </div>
@@ -563,6 +662,14 @@ document.addEventListener("contextmenu", e => e.preventDefault());
             <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm-1 5v10h2V8h-2zm1 12a1.25 1.25 0 100-2.5A1.25 1.25 0 0012 20z"/>
         </svg>
         Mi historia
+    </a>
+
+    <!-- ✅ NUEVO: Preguntas Claves (botón grande) -->
+    <a class="btn" href="#preguntas-claves">
+        <svg viewBox="0 0 24 24">
+            <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 17a1.25 1.25 0 110-2.5A1.25 1.25 0 0112 19zm2-7.3c-.7.6-1 1-1 1.8V14h-2v-.9c0-1.3.5-2.1 1.4-2.8.7-.6 1.6-1.1 1.6-2 0-1-.8-1.7-2-1.7-1.1 0-1.9.5-2.5 1.4l-1.6-1.1C8.8 5.6 10.1 4.5 12 4.5c2.4 0 4 1.4 4 3.6 0 1.7-1 2.6-2 3.6z"/>
+        </svg>
+        Preguntas Claves
     </a>
 
     <!-- Ubicación -->
@@ -697,6 +804,153 @@ document.addEventListener("contextmenu", e => e.preventDefault());
                 <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">Consultar por WhatsApp</a>
                 <a class="btn-mini" href="#portfolio">Ver trabajos</a>
             </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===========================
+   ✅ NUEVA SECCIÓN: PREGUNTAS CLAVES (FAQ)
+=========================== -->
+<section id="preguntas-claves">
+    <h2 id="faq-title">Preguntas Claves</h2>
+
+    <div class="faq-wrap">
+        <p class="faq-sub">
+            Tocá una pregunta para ver la respuesta.
+        </p>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Cuánto sale un tatuaje?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    El precio depende del tamaño, la zona del cuerpo, el nivel de detalle, el estilo y el tiempo de trabajo.
+                    Para cotizar te pido: foto de referencia, medida en cm y zona exacta.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Cómo reservo un turno?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    La reserva se confirma con una seña. La fecha queda guardada cuando se acredita el pago.
+                    El resto se abona el día del tatuaje.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Qué tengo que mandar para pedir presupuesto?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Foto de referencia (o varias), medida aproximada en cm y zona del cuerpo.
+                    Si es a color o blanco y negro, mejor. Con eso te paso una idea de precio y tiempo.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Duele?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Sí, pero es tolerable y depende mucho de la zona y de cada persona.
+                    Hay zonas más sensibles (costillas, manos, cuello) y otras más tranqui (brazo, gemelo, muslo).
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Cuánto dura la sesión?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Depende del diseño. Un tattoo chico puede llevar 30–60 min.
+                    Diseños más grandes pueden requerir varias horas o más de una sesión.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Qué tengo que hacer antes de tatuarme?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Dormí bien, comé antes de venir y vení hidratado. No tomes alcohol 24 hs antes.
+                    Evitá venir con la piel irritada o quemada por el sol.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Puedo tatuarme si tomé alcohol?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    No. Por seguridad y por calidad del tatuaje no se tatúa con alcohol
+                    (más sangrado, peor cicatrización y mayor riesgo).
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Se puede tapar un tatuaje viejo (cover up)?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Sí. Se evalúa según tamaño, color, oscuridad y estado del tattoo.
+                    A veces se puede cubrir directo, y otras conviene aclarar con láser antes para que el cover quede más limpio.
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Cuánto tarda en curar?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    La primera curación suele ser de 10 a 15 días, pero la piel termina de asentarse en 3 a 4 semanas
+                    (según zona y tipo de piel).
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-item">
+            <details>
+                <summary>
+                    <span class="q">¿Puedo ir al sol o a la pileta después?</span>
+                    <span class="icon">+</span>
+                </summary>
+                <div class="answer">
+                    Durante la curación, no. Pileta/mar/jacuzzi: mínimo 15 días.
+                    Sol directo: mínimo 30 días (y después siempre protector).
+                </div>
+            </details>
+        </div>
+
+        <div class="faq-cta">
+            <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">¿Te quedó una duda? WhatsApp</a>
         </div>
     </div>
 </section>
