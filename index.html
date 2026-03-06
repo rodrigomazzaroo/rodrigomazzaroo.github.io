@@ -65,6 +65,7 @@ body {
     justify-content: space-between;
     padding: 0 18px;
     z-index: 999999;
+    box-sizing: border-box;
 }
 
 /* ⭐ Sombra suave en CELULAR */
@@ -83,6 +84,7 @@ body {
     text-decoration: none;
     display: inline-flex;
     align-items: center;
+    cursor: pointer;
 }
 
 .header .h-links {
@@ -144,6 +146,21 @@ body {
 
     .header .h-links {
         order: 3;
+        width: 100%;
+        justify-content: center;
+        overflow-x: auto;
+        overflow-y: hidden;
+        padding-bottom: 2px;
+        scrollbar-width: none;
+    }
+
+    .header .h-links::-webkit-scrollbar {
+        display: none;
+    }
+
+    .header .h-links a {
+        flex: 0 0 auto;
+        white-space: nowrap;
     }
 }
 
@@ -171,6 +188,7 @@ body { padding-top: 70px; }
     transform: scale(0.6);
     animation: logoIntro 2s ease forwards;
     filter: drop-shadow(0 0 25px #d4af37);
+    max-width: 90vw;
 }
 
 @keyframes logoIntro {
@@ -193,6 +211,7 @@ body { padding-top: 70px; }
     animation: logoEnter 1.8s ease forwards, logoGlow 4s ease-in-out infinite alternate;
     opacity: 0;
     transform: scale(0.85);
+    max-width: 88vw;
 }
 
 @keyframes logoEnter {
@@ -284,17 +303,38 @@ h1 {
 
 .grid-portfolio img {
     width: 100%;
-    height: 250px;
+    aspect-ratio: 1 / 1;
     object-fit: cover;
     border-radius: 12px;
     border: 1px solid rgba(212,175,55,0.25);
     transition: 0.25s;
     cursor: pointer;
+    display: block;
 }
 
 .grid-portfolio img:hover {
     transform: scale(1.03);
     border-color: #d4af37;
+}
+
+/* ✅ NUEVO: vista cuadriculada tipo IG en celular */
+@media (max-width: 900px) {
+    .grid-portfolio {
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+    }
+}
+
+@media (max-width: 600px) {
+    .grid-portfolio {
+        width: 92%;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 8px;
+    }
+
+    .grid-portfolio img {
+        border-radius: 10px;
+    }
 }
 
 /* ===========================
@@ -326,6 +366,7 @@ h1 {
     line-height: 1.75;
     font-size: 16px;
     opacity: 0.95;
+    box-sizing: border-box;
 }
 
 .eventos-wrap p {
@@ -377,6 +418,7 @@ h1 {
     padding: 16px 16px 14px 16px;
     backdrop-filter: blur(6px);
     transition: 0.25s;
+    box-sizing: border-box;
 }
 
 .cuidados-card:hover {
@@ -447,6 +489,7 @@ h1 {
     line-height: 1.75;
     font-size: 16px;
     opacity: 0.95;
+    box-sizing: border-box;
 }
 
 .historia-wrap p {
@@ -592,6 +635,9 @@ h1 {
     justify-content: center;
     align-items: center;
     z-index: 999999999;
+    padding: 20px;
+    box-sizing: border-box;
+    cursor: zoom-out;
 }
 
 #lightbox img {
@@ -615,6 +661,43 @@ h1 {
     opacity: 0.8;
 }
 
+@media (max-width: 600px) {
+    h1 {
+        font-size: 38px;
+        padding: 0 12px;
+    }
+
+    .small {
+        font-size: 16px;
+        padding: 0 12px;
+    }
+
+    .buttons {
+        gap: 10px;
+        padding: 0 12px;
+    }
+
+    .btn {
+        font-size: 14px;
+        padding: 10px 14px;
+    }
+
+    #portfolio-title,
+    #eventos-title,
+    #cuidados-title,
+    #historia-title,
+    #faq-title {
+        font-size: 28px;
+    }
+
+    .eventos-sub,
+    .cuidados-sub,
+    .faq-sub,
+    .eventos-wrap,
+    .historia-wrap {
+        width: 92%;
+    }
+}
 </style>
 
 <!-- PARALLAX REAL CON MOUSE / TOUCH -->
@@ -654,13 +737,9 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     <div class="h-links">
         <a href="https://wa.me/541130548042" target="_blank">Turnos</a>
         <a href="https://www.instagram.com/rodrimazzaroink/" target="_blank">Instagram</a>
-        <!-- ✅ NUEVO: link directo a Cuidados -->
         <a href="#cuidados">Cuidados</a>
-        <!-- ✅ NUEVO: link directo a Mi Historia -->
         <a href="#historia">Mi historia</a>
-        <!-- ✅ NUEVO: link directo a Preguntas Claves -->
         <a href="#preguntas-claves">Preguntas</a>
-        <!-- ✅ NUEVO: link directo a Tattoo Live en Eventos -->
         <a href="#eventos">Tattoo Live</a>
     </div>
 
@@ -711,7 +790,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Portfolio
     </a>
 
-    <!-- ✅ NUEVO: Cuidados (botón grande) -->
+    <!-- Cuidados -->
     <a class="btn" href="#cuidados">
         <svg viewBox="0 0 24 24">
             <path d="M12 2a4 4 0 014 4c0 1.2-.5 2.3-1.3 3.1l-.7.7V12h2a2 2 0 012 2v6H6v-6a2 2 0 012-2h2V9.8l-.7-.7A4.3 4.3 0 018 6a4 4 0 014-4zm-2 10H8v6h8v-6h-2v2h-4v-2z"/>
@@ -719,7 +798,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Cuidados
     </a>
 
-    <!-- ✅ NUEVO: Mi historia (botón grande) -->
+    <!-- Mi historia -->
     <a class="btn" href="#historia">
         <svg viewBox="0 0 24 24">
             <path d="M12 3c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9zm-1 5v10h2V8h-2zm1 12a1.25 1.25 0 100-2.5A1.25 1.25 0 0012 20z"/>
@@ -727,7 +806,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Mi historia
     </a>
 
-    <!-- ✅ NUEVO: Preguntas Claves (botón grande) -->
+    <!-- Preguntas Claves -->
     <a class="btn" href="#preguntas-claves">
         <svg viewBox="0 0 24 24">
             <path d="M12 2a10 10 0 100 20 10 10 0 000-20zm0 17a1.25 1.25 0 110-2.5A1.25 1.25 0 0112 19zm2-7.3c-.7.6-1 1-1 1.8V14h-2v-.9c0-1.3.5-2.1 1.4-2.8.7-.6 1.6-1.1 1.6-2 0-1-.8-1.7-2-1.7-1.1 0-1.9.5-2.5 1.4l-1.6-1.1C8.8 5.6 10.1 4.5 12 4.5c2.4 0 4 1.4 4 3.6 0 1.7-1 2.6-2 3.6z"/>
@@ -735,7 +814,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Preguntas Claves
     </a>
 
-    <!-- ✅ NUEVO: Tattoo Live en Eventos -->
+    <!-- Tattoo Live en Eventos -->
     <a class="btn" href="#eventos">
         <svg viewBox="0 0 24 24">
             <path d="M7 4h10a2 2 0 012 2v3h-2V6H7v12h10v-3h2v3a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2zm8.59 3L20 11.41 18.59 12.8 16 10.21V17h-2v-6.79l-2.59 2.59L10 11.41 14.41 7h1.18z"/>
@@ -753,12 +832,12 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     </a>
 
     <!-- TikTok -->
-<a class="btn" href="https://www.tiktok.com/@rodrigomazzaro0" target="_blank">
-    <svg viewBox="0 0 48 48">
-        <path fill="currentColor" d="M32.3 6.1c.3 2.2 1.4 4 3.1 5.3 1.1.8 2.4 1.3 3.8 1.5v6c-2.5-.1-4.9-.8-7.1-2v12.5c0 3.2-1.1 5.9-3.4 8.1S23.9 40 20.7 40c-3 0-5.6-1-7.7-3.1s-3.1-4.6-3.1-7.6c0-3 1-5.6 3.1-7.7 2.1-2.1 4.6-3.1 7.7-3.1 1 0 2 .1 3 .4v6.3c-.9-.4-1.9-.5-2.9-.4-1.6.2-3 1-4.1 2.2-1.1 1.2-1.6 2.7-1.6 4.3 0 1.8.6 3.3 1.9 4.6 1.3 1.3 2.8 1.9 4.6 1.9 1.7 0 3.2-.6 4.4-1.9 1.2-1.2 1.9-2.7 1.9-4.4V6h6.3z"/>
-    </svg>
-    TikTok
-</a>
+    <a class="btn" href="https://www.tiktok.com/@rodrigomazzaro0" target="_blank">
+        <svg viewBox="0 0 48 48">
+            <path fill="currentColor" d="M32.3 6.1c.3 2.2 1.4 4 3.1 5.3 1.1.8 2.4 1.3 3.8 1.5v6c-2.5-.1-4.9-.8-7.1-2v12.5c0 3.2-1.1 5.9-3.4 8.1S23.9 40 20.7 40c-3 0-5.6-1-7.7-3.1s-3.1-4.6-3.1-7.6c0-3 1-5.6 3.1-7.7 2.1-2.1 4.6-3.1 7.7-3.1 1 0 2 .1 3 .4v6.3c-.9-.4-1.9-.5-2.9-.4-1.6.2-3 1-4.1 2.2-1.1 1.2-1.6 2.7-1.6 4.3 0 1.8.6 3.3 1.9 4.6 1.3 1.3 2.8 1.9 4.6 1.9 1.7 0 3.2-.6 4.4-1.9 1.2-1.2 1.9-2.7 1.9-4.4V6h6.3z"/>
+        </svg>
+        TikTok
+    </a>
 </div>
 
 <!-- Portfolio -->
@@ -766,31 +845,31 @@ document.addEventListener("contextmenu", e => e.preventDefault());
     <h2 id="portfolio-title">Portfolio</h2>
 
     <div class="grid-portfolio">
-        <img src="img1.jpg">
-        <img src="img2.jpg">
-        <img src="img3.jpg">
-        <img src="img4.jpg">
-        <img src="img5.jpg">
-        <img src="img6.jpg">
-        <img src="img7.jpg">
-        <img src="img8.jpg">
-        <img src="img9.jpg">
-        <img src="img10.jpg">
-        <img src="img11.jpg">
-        <img src="img12.jpg">
-        <img src="img13.jpg">
-        <img src="img14.jpg">
-        <img src="img15.jpg">
-        <img src="img16.jpg">
-        <img src="img17.jpg">
-        <img src="img18.jpg">
-        <img src="img19.jpg">
-        <img src="img20.jpg">
+        <img src="img1.jpg" alt="Trabajo 1">
+        <img src="img2.jpg" alt="Trabajo 2">
+        <img src="img3.jpg" alt="Trabajo 3">
+        <img src="img4.jpg" alt="Trabajo 4">
+        <img src="img5.jpg" alt="Trabajo 5">
+        <img src="img6.jpg" alt="Trabajo 6">
+        <img src="img7.jpg" alt="Trabajo 7">
+        <img src="img8.jpg" alt="Trabajo 8">
+        <img src="img9.jpg" alt="Trabajo 9">
+        <img src="img10.jpg" alt="Trabajo 10">
+        <img src="img11.jpg" alt="Trabajo 11">
+        <img src="img12.jpg" alt="Trabajo 12">
+        <img src="img13.jpg" alt="Trabajo 13">
+        <img src="img14.jpg" alt="Trabajo 14">
+        <img src="img15.jpg" alt="Trabajo 15">
+        <img src="img16.jpg" alt="Trabajo 16">
+        <img src="img17.jpg" alt="Trabajo 17">
+        <img src="img18.jpg" alt="Trabajo 18">
+        <img src="img19.jpg" alt="Trabajo 19">
+        <img src="img20.jpg" alt="Trabajo 20">
     </div>
 </section>
 
 <!-- ===========================
-   ✅ NUEVA SECCIÓN: TATTOO LIVE EN EVENTOS
+   TATTOO LIVE EN EVENTOS
 =========================== -->
 <section id="eventos">
     <h2 id="eventos-title">Tattoo Live en Eventos</h2>
@@ -832,7 +911,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 </section>
 
 <!-- ===========================
-   ✅ NUEVA SECCIÓN: CUIDADOS
+   CUIDADOS
 =========================== -->
 <section id="cuidados">
     <h2 id="cuidados-title">Cuidados</h2>
@@ -883,7 +962,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 </section>
 
 <!-- ===========================
-   ✅ NUEVA SECCIÓN: MI HISTORIA
+   MI HISTORIA
 =========================== -->
 <section id="historia">
     <h2 id="historia-title">Mi historia</h2>
@@ -922,7 +1001,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 </section>
 
 <!-- ===========================
-   ✅ NUEVA SECCIÓN: PREGUNTAS CLAVES (FAQ)
+   PREGUNTAS CLAVES (FAQ)
 =========================== -->
 <section id="preguntas-claves">
     <h2 id="faq-title">Preguntas Claves</h2>
@@ -1070,12 +1149,12 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="cerrarLightbox()">
-    <img id="lightbox-img">
+    <img id="lightbox-img" alt="Imagen ampliada">
 </div>
 
 <div class="footer">© 2017 Rodrigo Mazzaro</div>
 
-<!-- ⭐ SCRIPT LIGHTBOX -->
+<!-- SCRIPT LIGHTBOX -->
 <script>
 const imgs = document.querySelectorAll(".grid-portfolio img");
 const lightbox = document.getElementById("lightbox");
@@ -1085,15 +1164,27 @@ imgs.forEach(img => {
     img.addEventListener("click", () => {
         lightbox.style.display = "flex";
         lightboxImg.src = img.src;
+        lightboxImg.alt = img.alt || "Imagen ampliada";
     });
 });
 
 function cerrarLightbox() {
     lightbox.style.display = "none";
+    lightboxImg.src = "";
 }
+
+document.addEventListener("keydown", function(e) {
+    if (e.key === "Escape") {
+        cerrarLightbox();
+    }
+});
+
+lightboxImg.addEventListener("click", function(e) {
+    e.stopPropagation();
+});
 </script>
 
-<!-- ⭐ SCRIPT PARA FRASES ROTATIVAS CON TIEMPOS PERSONALIZADOS -->
+<!-- SCRIPT PARA FRASES ROTATIVAS CON TIEMPOS PERSONALIZADOS -->
 <script>
 const frases = [
     { text: "Seguime en mis diferentes redes", tiempo: 10000 },
@@ -1122,20 +1213,17 @@ function cambiarFrase() {
 cambiarFrase();
 </script>
 
-<!-- ✅ FIX: Que al entrar al link SIEMPRE arranque arriba -->
+<!-- FIX: Que al entrar al link SIEMPRE arranque arriba -->
 <script>
 (function() {
-    // Evita que el navegador "recuerde" el scroll y te mande abajo
     if ("scrollRestoration" in history) {
         history.scrollRestoration = "manual";
     }
 
     window.addEventListener("load", () => {
-        // Solo en la primera carga de esta pestaña: arrancar arriba aunque venga con #hash
         if (!sessionStorage.getItem("rm_first_load_done")) {
             sessionStorage.setItem("rm_first_load_done", "1");
 
-            // Si entró con #algo, lo limpiamos para que no baje
             if (location.hash) {
                 history.replaceState(null, "", location.pathname + location.search);
             }
