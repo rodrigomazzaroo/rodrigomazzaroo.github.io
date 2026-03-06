@@ -292,6 +292,53 @@ h1 {
 }
 
 /* ===========================
+   TATTOO LIVE EN EVENTOS
+=========================== */
+#eventos { margin-top: 55px; }
+
+#eventos-title { font-size: 32px; }
+
+.eventos-sub {
+    width: 90%;
+    max-width: 900px;
+    margin: 10px auto 18px auto;
+    font-size: 16px;
+    opacity: 0.9;
+    line-height: 1.55;
+}
+
+.eventos-wrap {
+    width: 90%;
+    max-width: 980px;
+    margin: 0 auto 22px auto;
+    background: rgba(0,0,0,0.45);
+    border: 1px solid rgba(212,175,55,0.25);
+    border-radius: 16px;
+    padding: 22px 20px;
+    backdrop-filter: blur(6px);
+    text-align: left;
+    line-height: 1.75;
+    font-size: 16px;
+    opacity: 0.95;
+}
+
+.eventos-wrap p {
+    margin: 0 0 12px 0;
+}
+
+.eventos-wrap p:last-child {
+    margin-bottom: 0;
+}
+
+.eventos-cta {
+    margin-top: 16px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    flex-wrap: wrap;
+}
+
+/* ===========================
    CUIDADOS (NUEVA SECCIÓN)
 =========================== */
 #cuidados { margin-top: 55px; }
@@ -605,6 +652,8 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <a href="#historia">Mi historia</a>
         <!-- ✅ NUEVO: link directo a Preguntas Claves -->
         <a href="#preguntas-claves">Preguntas</a>
+        <!-- ✅ NUEVO: link directo a Tattoo Live en Eventos -->
+        <a href="#eventos">Tattoo Live</a>
     </div>
 
 </div>
@@ -678,6 +727,14 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         Preguntas Claves
     </a>
 
+    <!-- ✅ NUEVO: Tattoo Live en Eventos -->
+    <a class="btn" href="#eventos">
+        <svg viewBox="0 0 24 24">
+            <path d="M7 4h10a2 2 0 012 2v3h-2V6H7v12h10v-3h2v3a2 2 0 01-2 2H7a2 2 0 01-2-2V6a2 2 0 012-2zm8.59 3L20 11.41 18.59 12.8 16 10.21V17h-2v-6.79l-2.59 2.59L10 11.41 14.41 7h1.18z"/>
+        </svg>
+        Tattoo Live en Eventos
+    </a>
+
     <!-- Ubicación -->
     <a class="btn" href="https://maps.app.goo.gl/tY1Vg2tEjphm97ci6" target="_blank">
         <svg viewBox="0 0 24 24"><path d="M12 2a7 7 0 00-7 
@@ -721,6 +778,48 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <img src="img18.jpg">
         <img src="img19.jpg">
         <img src="img20.jpg">
+    </div>
+</section>
+
+<!-- ===========================
+   ✅ NUEVA SECCIÓN: TATTOO LIVE EN EVENTOS
+=========================== -->
+<section id="eventos">
+    <h2 id="eventos-title">Tattoo Live en Eventos</h2>
+    <p class="eventos-sub">
+        Una experiencia distinta para casamientos, fiestas y eventos privados.
+    </p>
+
+    <div class="eventos-wrap">
+        <p>
+            Llevo el arte del tatuaje a tu evento para crear una experiencia única, elegante y memorable.
+            Una propuesta pensada para quienes buscan ofrecer algo diferente y dejar un recuerdo real en sus invitados.
+        </p>
+        <p>
+            Trabajo tatuajes pequeños, cuidados y adaptados a la dinámica del evento, manteniendo siempre la prolijidad,
+            la higiene y la calidad en cada pieza.
+        </p>
+        <p>
+            Ideal para casamientos, celebraciones privadas, activaciones y eventos donde el objetivo sea sorprender con algo auténtico.
+        </p>
+
+        <div class="eventos-cta">
+            <a class="btn-mini" href="https://wa.me/541130548042" target="_blank">Consultar por mi evento</a>
+        </div>
+    </div>
+
+    <div class="grid-portfolio">
+        <img src="evento1.jpg" alt="Tattoo Live en evento 1">
+        <img src="evento2.jpg" alt="Tattoo Live en evento 2">
+        <img src="evento3.jpg" alt="Tattoo Live en evento 3">
+        <img src="evento4.jpg" alt="Tattoo Live en evento 4">
+        <img src="evento5.jpg" alt="Tattoo Live en evento 5">
+        <img src="evento6.jpg" alt="Tattoo Live en evento 6">
+        <img src="evento7.jpg" alt="Tattoo Live en evento 7">
+        <img src="evento8.jpg" alt="Tattoo Live en evento 8">
+        <img src="evento9.jpg" alt="Tattoo Live en evento 9">
+        <img src="evento10.jpg" alt="Tattoo Live en evento 10">
+        <img src="evento11.jpg" alt="Tattoo Live en evento 10">
     </div>
 </section>
 
@@ -1038,6 +1137,5 @@ cambiarFrase();
     });
 })();
 </script>
-
 </body>
 </html>
