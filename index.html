@@ -79,6 +79,12 @@ body {
     filter: drop-shadow(0 0 12px #d4af37);
 }
 
+.header > a {
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
 .header .h-links {
     display: flex;
     gap: 14px;
@@ -632,14 +638,16 @@ document.addEventListener("contextmenu", e => e.preventDefault());
 </script>
 
 </head>
-<body>
+<body id="top">
 
 <!-- ===========================
        HEADER FIJO + FRASES
 =========================== -->
 <div class="header">
 
-    <img src="logo.png">
+    <a href="#top">
+        <img src="logo.png">
+    </a>
 
     <div class="header-frase" id="header-frase">El momento es ahora.</div>
 
@@ -819,7 +827,7 @@ document.addEventListener("contextmenu", e => e.preventDefault());
         <img src="evento8.jpg" alt="Tattoo Live en evento 8">
         <img src="evento9.jpg" alt="Tattoo Live en evento 9">
         <img src="evento10.jpg" alt="Tattoo Live en evento 10">
-        <img src="evento11.jpg" alt="Tattoo Live en evento 10">
+        <img src="evento11.jpg" alt="Tattoo Live en evento 11">
     </div>
 </section>
 
